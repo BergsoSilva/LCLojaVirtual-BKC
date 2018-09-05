@@ -1,1 +1,1 @@
-Projeto Loja Virtual - Exposição e Venda e Laços Fabicados com Fita
+Projeto Loja Virtual - Exposição e Venda de Laços Fabricados com Fita
