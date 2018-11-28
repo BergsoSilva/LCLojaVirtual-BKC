@@ -5,22 +5,20 @@
  */
 package com.silva.lacoscomfitaApp.model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 
 /**
  *
@@ -31,28 +29,14 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name = "CLIENTE")
-public class Cliente implements Serializable{
-    
+@Table(name="cliente")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CLIID")
-    private Integer id;
-    @Column(name = "CLINOME")
+    private Long id;
     private String nome;
-    @Column(name = "CLICPF")
-    private Double cpf;
-    @Column(name = "CLIDATANASC")
-    private Calendar data;
+    private String cpf;
     
-    /**
-     * mappers
-     */
-    
-    @OneToMany(cascade=CascadeType.MERGE, mappedBy="cliente")
-    private List<Pedido> pedidos = new ArrayList<>(); 
-
-    
-    
-   
+    @Temporal(value=TemporalType.DATE)
+    private Date datanasc;
 }
