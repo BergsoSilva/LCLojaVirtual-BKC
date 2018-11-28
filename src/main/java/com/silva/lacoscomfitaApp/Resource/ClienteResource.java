@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.silva.lacoscomfitaApp.repository.ClienteRepository;
+import java.net.URI;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  *
@@ -33,10 +37,15 @@ public class ClienteResource {
         return clienteService.findAll();
     }
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void criar(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> criar(@RequestBody Cliente cliente , HttpServletResponse response){
         
         Cliente clienteSalvar = clienteService.save(cliente);
-         
+      
+        URI uri =  ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(clienteSalvar.getId()).toUri();
+
+        response.setHeader("Location", uri.toASCIIString());
+        return ResponseEntity.created(uri).body(clienteSalvar);
+        
     }
 }
