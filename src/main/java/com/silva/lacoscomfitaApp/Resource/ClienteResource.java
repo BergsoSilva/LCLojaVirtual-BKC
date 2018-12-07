@@ -18,6 +18,7 @@ import com.silva.lacoscomfitaApp.repository.ClienteRepository;
 import java.net.URI;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
@@ -47,5 +48,11 @@ public class ClienteResource {
         response.setHeader("Location", uri.toASCIIString());
         return ResponseEntity.created(uri).body(clienteSalvar);
         
+    }
+    @GetMapping("/{id}")
+    public  ResponseEntity<Cliente> buscarPeloId(@PathVariable("id") Long id){
+        Cliente cliente = clienteService.findById(id).get();
+        
+        return cliente!=null?ResponseEntity.ok(cliente):ResponseEntity.notFound().build();
     }
 }
