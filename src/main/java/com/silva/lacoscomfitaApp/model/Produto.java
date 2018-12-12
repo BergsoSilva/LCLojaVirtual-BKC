@@ -5,7 +5,6 @@
  */
 package com.silva.lacoscomfitaApp.model;
 
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,20 +31,22 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(name="cliente")
-public class Cliente {
+@Table(name="produto")
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cliid")
+    @Column(name = "proid")
     private Long id;
     @NotNull
-    @Size(min = 3 , max = 30)
-    @Column(name = "clinome")
-    private String nome;
-    @Column(name = "clicpf")
-    private String cpf;
+    @Size(min = 3 , max = 50)
+    @Column(name = "prodescricao")
+    private String descricao;
     
-    @Temporal(value=TemporalType.DATE)
-    @Column(name = "clidatanasc")
-    private Date datanasc;
+    @NotNull
+    @Column(name = "provalor")
+    private double valor;
+    @NotNull
+    @Column(name = "proqtde")
+    private Integer quantidade;
+   
 }
