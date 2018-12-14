@@ -42,6 +42,8 @@ public class Cliente {
     @Size(min = 3 , max = 30)
     @Column(name = "clinome")
     private String nome;
+    @NotNull
+    @Size(max = 14)
     @Column(name = "clicpf")
     private String cpf;
     
