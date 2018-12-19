@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.silva.lacoscomfitaApp.repository.ProdutoRepository;
+import com.silva.lacoscomfitaApp.service.ProdutoService;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.context.ApplicationEventPublisher;
@@ -21,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
@@ -34,6 +36,9 @@ public class ProdutoResource {
 
     @Autowired
     ProdutoRepository produtoRepository;
+    
+    @Autowired
+    private ProdutoService produtoService;
    
     @Autowired
     private ApplicationEventPublisher publisher;
@@ -57,5 +62,10 @@ public class ProdutoResource {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long id){
         produtoRepository.deleteById(id);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable  Long id, @Valid @RequestBody Produto produto){
+        Produto produtoNovo = produtoService.atualizar(id, produto);
+        return ResponseEntity.ok(produtoNovo);
     }
 }
