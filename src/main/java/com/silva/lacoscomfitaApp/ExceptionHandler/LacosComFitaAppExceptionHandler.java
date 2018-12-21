@@ -55,7 +55,7 @@ public class LacosComFitaAppExceptionHandler extends ResponseEntityExceptionHand
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Object> EmptyResultDataAccessException(EmptyResultDataAccessException ex,WebRequest request){
         
-         String mensagemUsuario = messageSource.getMessage("recurso.nao-encontrado",null, LocaleContextHolder.getLocale());
+        String mensagemUsuario = messageSource.getMessage("recurso.nao-encontrado",null, LocaleContextHolder.getLocale());
         String mensagemDesenvolvedor = ex.toString();
         
          List<Erro> erros = Arrays.asList(new Erro(mensagemUsuario, mensagemDesenvolvedor));
@@ -63,6 +63,8 @@ public class LacosComFitaAppExceptionHandler extends ResponseEntityExceptionHand
         return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
     
+
+
     private List<Erro> criaraListaDeErros(BindingResult bindingResult){
         List<Erro> erros = new ArrayList<>();
         
@@ -76,6 +78,7 @@ public class LacosComFitaAppExceptionHandler extends ResponseEntityExceptionHand
         return erros;
     }
     
+
     public static class Erro{
         private String mensagemUsuario;
         private String messagemDesenvolvedor;
