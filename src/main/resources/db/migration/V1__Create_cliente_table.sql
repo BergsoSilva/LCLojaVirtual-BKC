@@ -3,7 +3,7 @@ CREATE TABLE cliente(
   clinome VARCHAR(50) NOT NULL,
   clicpf VARCHAR(14) NOT NULL,
   clidatanasc DATE  NULL,
-  PRIMARY KEY (CLIID)
+  PRIMARY KEY (cliid)
   )
 ENGINE = InnoDB;
 

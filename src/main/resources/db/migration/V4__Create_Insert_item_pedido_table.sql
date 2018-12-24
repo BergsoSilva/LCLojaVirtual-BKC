@@ -1,4 +1,4 @@
-CREATE TABLE ITEM_PEDIDO (
+CREATE TABLE item_pedido (
   ippedid INT(11) NOT NULL,
   ipqtde INT(11) NOT NULL,
   ipprodid INT(11) NOT NULL,
@@ -6,11 +6,11 @@ CREATE TABLE ITEM_PEDIDO (
   ipid INT(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (ipid),
     FOREIGN KEY (ippedid)
-    REFERENCES PEDIDO (pedid),
+    REFERENCES pedido (pedid),
     FOREIGN KEY (ipprodid)
-    REFERENCES PRODUTO (PROID))
+    REFERENCES produto (proid))
 ENGINE = InnoDB;
 
-INSERT INTO ITEM_PEDIDO (ippedid, ipqtde, ipprodid, ipvaloruni) VALUES (1,2,1,6.0);
+INSERT INTO item_pedido (ippedid, ipqtde, ipprodid, ipvaloruni) VALUES (1,2,1,6.0);
 
 
