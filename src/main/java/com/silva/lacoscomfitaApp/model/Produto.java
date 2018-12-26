@@ -5,6 +5,7 @@
  */
 package com.silva.lacoscomfitaApp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="produto")
-public class Produto {
+public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "proid")
@@ -51,7 +52,7 @@ public class Produto {
     @Column(name = "proqtde")
     private Integer quantidade;
     
-    @OneToOne(mappedBy = "produto")
-    private ItemPedidoVenda itemPedido;
+//    @OneToOne(mappedBy = "produto")
+//    private ItemPedidoVenda itemPedido;
    
 }

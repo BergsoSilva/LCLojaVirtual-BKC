@@ -5,6 +5,7 @@
  */
 package com.silva.lacoscomfitaApp.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
@@ -33,7 +34,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="cliente")
-public class Cliente {
+public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cliid")
