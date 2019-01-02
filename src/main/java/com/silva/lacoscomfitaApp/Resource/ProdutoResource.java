@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -44,10 +45,12 @@ public class ProdutoResource {
     private ApplicationEventPublisher publisher;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PRODUTO')")
     public List<Produto> listar(){
         return produtoRepository.findAll();
     }
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_PRODUTO')")
     public ResponseEntity<Produto> criar(@Valid @RequestBody Produto produto , HttpServletResponse response){
         Produto produtoSalvo = produtoRepository.save(produto);
         publisher.publishEvent(new  RecursoCriadoEvent(this, response, produtoSalvo.getId()) );
@@ -59,6 +62,7 @@ public class ProdutoResource {
         return produto!=null?ResponseEntity.ok(produto):ResponseEntity.notFound().build();
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_REMOVER_PRODUTO')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long id){
         produtoRepository.deleteById(id);

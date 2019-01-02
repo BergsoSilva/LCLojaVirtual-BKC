@@ -36,13 +36,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("angular")
-                .secret("{noop}@ngul@r0")
+                .secret("$2a$10$NBt2e6HaRXb1iWUiPIxM/.h12azP5Dl7frcnIJJXwqFv6mEtQKfxG")// @ngul@r0
                 .scopes("read", "write")
                 .authorizedGrantTypes("password","refresh_token")
-                .accessTokenValiditySeconds(20)
+                .accessTokenValiditySeconds(1800)
                 .refreshTokenValiditySeconds(36000 * 24);
 
     }
+    
+    
+    
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
@@ -50,8 +53,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .tokenStore(tokenStore())
                 .accessTokenConverter(accessTokenConverter())
                 .reuseRefreshTokens(false)// nao resproveitar o novo token
-                .authenticationManager(authenticationManager)
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .authenticationManager(authenticationManager);
+                
 
     }
     @Bean

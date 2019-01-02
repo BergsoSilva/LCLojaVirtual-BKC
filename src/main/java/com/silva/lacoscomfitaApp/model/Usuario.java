@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.silva.lacoscomfitaApp.model;
 
 import java.io.Serializable;
@@ -17,33 +13,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-
-/**
- *
- * @author bergson
- */
 @Getter
 @Setter
-@EqualsAndHashCode
 @Entity
-@Table(name = "usuario")
+@Table(name =  "usuario")
 public class Usuario implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column("useid")
+    @Column(name = "useid")
     private Long id;
     
-    @Column("usenome")
+    @Column(name =  "usenome")
     private String nome;
     
-    @Column("useemail")
+    @Column( name = "useemail")
     private String email;
     
-    @Column("usesenha")
+    @Column(name = "usesenha")
     private String senha;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -62,6 +50,9 @@ public class Usuario implements Serializable {
         this.permissoes = permissoes;
     }
     
-     
+    
+    
+ 
 
+   
 }

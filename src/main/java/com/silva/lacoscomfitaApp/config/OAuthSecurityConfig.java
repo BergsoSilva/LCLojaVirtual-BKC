@@ -5,6 +5,7 @@
  */
 package com.silva.lacoscomfitaApp.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +14,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
@@ -23,11 +26,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableAuthorizationServer
 @EnableResourceServer
-public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter{
-  
-    
+public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter {
+
+ 
     @Bean
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
@@ -35,22 +39,9 @@ public class OAuthSecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Bean
-    @Override
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return super.userDetailsServiceBean();
+    public PasswordEncoder passwordEncoder(){
+        return  new BCryptPasswordEncoder();
     }
-    
-    
 
-    
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("{noop}admin").roles("ROLE");
-        System.out.println("---------- passou aqui##############################################################################################");
-    }
-    
-    
-
-    
 }
+
