@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  *
  * @author bergson
  */
-@ConfigurationProperties("lacoscomfitas")
+@ConfigurationProperties("lacoscomfita")
 public class LacosApiProperty {
     
     private String originPermitida="http://localhost:8000" ;
