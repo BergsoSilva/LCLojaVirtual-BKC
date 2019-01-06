@@ -14,6 +14,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("lacoscomfitas")
 public class LacosApiProperty {
     
+    private String originPermitida="http://localhost:8000" ;
+    
     private Seguranca seguranca= new Seguranca();
 
     public Seguranca getSeguranca() {
@@ -22,6 +24,14 @@ public class LacosApiProperty {
 
     public void setSeguranca(Seguranca seguranca) {
         this.seguranca = seguranca;
+    }
+
+    public String getOriginPermitida() {
+        return originPermitida;
+    }
+
+    public void setOriginPermitida(String originPermitida) {
+        this.originPermitida = originPermitida;
     }
     
     
