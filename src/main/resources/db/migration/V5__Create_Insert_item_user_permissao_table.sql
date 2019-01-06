@@ -35,7 +35,7 @@ INSERT INTO usuario_permissao (up_useid, up_perid) values (1, 2);
 INSERT INTO usuario_permissao (up_useid, up_perid) values (1, 3);
 
 
--- maria
+-- bergson
 INSERT INTO usuario_permissao (up_useid, up_perid) values (2, 3);
 INSERT INTO usuario_permissao (up_useid, up_perid) values (2, 4);
 INSERT INTO usuario_permissao (up_useid, up_perid) values (2, 5);

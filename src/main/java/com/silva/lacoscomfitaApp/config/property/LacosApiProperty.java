@@ -13,17 +13,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties("lacoscomfita")
 public class LacosApiProperty {
-    
-    private String originPermitida="http://localhost:8000" ;
-    
-    private Seguranca seguranca= new Seguranca();
+
+    private String originPermitida = "http://localhost:8000";
+
+    private final Seguranca seguranca = new Seguranca();
 
     public Seguranca getSeguranca() {
         return seguranca;
-    }
-
-    public void setSeguranca(Seguranca seguranca) {
-        this.seguranca = seguranca;
     }
 
     public String getOriginPermitida() {
@@ -33,23 +29,21 @@ public class LacosApiProperty {
     public void setOriginPermitida(String originPermitida) {
         this.originPermitida = originPermitida;
     }
-    
-    
-    
-    public static class Seguranca{
-        private boolean  enableHtps;
 
-        public boolean isEnableHtps() {
-            return enableHtps;
+    public static class Seguranca {
+
+        private boolean enableHttps;
+
+        public boolean isEnableHttps() {
+            return enableHttps;
         }
 
-        public void setEnableHtps(boolean enableHtps) {
-            this.enableHtps = enableHtps;
+        public void setEnableHttps(boolean enableHttps) {
+            this.enableHttps = enableHttps;
         }
-        
-        
+
     }
-    
-    
-    
+
+
+
 }
