@@ -121,6 +121,13 @@
             <artifactId>spring-security-jwt</artifactId>
             <version>${spring-security-jwt.version}</version>
         </dependency>
+        
+        <!-- profiles -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
        
     </dependencies>
 
