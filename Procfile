@@ -1,1 +1,1 @@
-web: java - Dserver.port=$PORT - Dsrping.profiles.acive=prod $JAVA_OPTS -jar target/lacoscomfita*.jar
+web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/lacoscomfita*.jar
