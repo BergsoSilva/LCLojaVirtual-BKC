@@ -33,6 +33,12 @@ public class LacosApiProperty {
     public static class Seguranca {
 
         private boolean enableHttps;
+        private String  swaggerClientId;
+        private String  swaggerclientSecret;
+        private String  grantTypePassword;
+        private String  grantTypeRefreshToken;
+        private String  scopeRead;
+        private String  scopeWrite;
 
         public boolean isEnableHttps() {
             return enableHttps;
@@ -42,6 +48,53 @@ public class LacosApiProperty {
             this.enableHttps = enableHttps;
         }
 
+        public String getSwaggerClientId() {
+            return swaggerClientId;
+        }
+
+        public void setSwaggerClientId(String swaggerClientId) {
+            this.swaggerClientId = swaggerClientId;
+        }
+
+        public String getSwaggerclientSecret() {
+            return swaggerclientSecret;
+        }
+
+        public void setSwaggerclientSecret(String swaggerclientSecret) {
+            this.swaggerclientSecret = swaggerclientSecret;
+        }
+
+        public String getGrantTypePassword() {
+            return grantTypePassword;
+        }
+
+        public void setGrantTypePassword(String grantTypePassword) {
+            this.grantTypePassword = grantTypePassword;
+        }
+
+        public String getGrantTypeRefreshToken() {
+            return grantTypeRefreshToken;
+        }
+
+        public void setGrantTypeRefreshToken(String grantTypeRefreshToken) {
+            this.grantTypeRefreshToken = grantTypeRefreshToken;
+        }
+
+        public String getScopeRead() {
+            return scopeRead;
+        }
+
+        public void setScopeRead(String scopeRead) {
+            this.scopeRead = scopeRead;
+        }
+
+        public String getScopeWrite() {
+            return scopeWrite;
+        }
+
+        public void setScopeWrite(String scopeWrite) {
+            this.scopeWrite = scopeWrite;
+        }
     }
 
 
