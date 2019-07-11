@@ -1,4 +1,10 @@
 package com.silva.lacoscomfitaApp.service;
 
-public interface UsuarioService {
+import com.silva.lacoscomfitaApp.model.Usuario;
+
+import java.util.Optional;
+
+public interface UsuarioService extends GenericService<Usuario,Long> {
+
+    Usuario findByEmail(String email);
 }
